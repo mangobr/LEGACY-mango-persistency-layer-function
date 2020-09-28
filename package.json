@@ -1,0 +1,16 @@
+{
+  "name": "mangoodb-function",
+  "version": "0.0.1",
+  "description": "A serverless function to make MangooDB queries",
+  "main": "index.js",
+  "repository": "https://moraesjeremias@bitbucket.org/moraesjeremias/mangoodb-function.git",
+  "author": "Jeremias Moraes <moraesjeremias@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.5"
+  },
+  "scripts": {
+    "start": "node handler.js"
+  }
+}
