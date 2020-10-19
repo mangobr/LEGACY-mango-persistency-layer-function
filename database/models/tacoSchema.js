@@ -138,7 +138,8 @@ const TacoSchema = new mongoose.Schema(
                 qty: String,
                 unit: String
             }
-        }
+        },
+        searchDescription: String
     }
 )
 
