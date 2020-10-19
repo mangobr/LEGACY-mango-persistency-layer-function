@@ -1,16 +1,16 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-function MangooDBConnect() {
+function MangoDBConnect() {
   mongoose.connect(
-    `${process.env.MANGOODB_CONNECT}`,
+    `${process.env.MANGODB_CONNECT}`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }
   )
   .then(() =>{
-    console.log("Conectado com o Mangoo DB")
+    console.log("Conectado com o Mango DB")
   })
   .catch(err => {
     console.log(err);
@@ -19,4 +19,4 @@ function MangooDBConnect() {
 };
 
 
-module.exports = MangooDBConnect;
+module.exports = MangoDBConnect;
