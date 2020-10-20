@@ -1,0 +1,27 @@
+service: mangoodb-function
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: staging
+  region: us-east-1
+  memorySize: 128
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource:
+        - "arn:aws:s3:::com.mango.images-uploads.hml"
+
+functions:
+  mangoDBOperations:
+    handler: handler.mangoDBOperations
+    environment:
+      MANGODB_CONNECT: mongodb+srv://mangooAI:2EmsljTfzHUpDS7h@mangodb.5aesw.mongodb.net/mangoDB
