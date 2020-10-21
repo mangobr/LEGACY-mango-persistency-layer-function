@@ -2,7 +2,7 @@ image: node:11.13.0-alpine
 
 pipelines:
   branches:
-    master:
+    feature/FA-157-criar-o-serveless-yaml:
       - step:
           caches:
             - node
