@@ -20,6 +20,14 @@ provider:
       Resource:
         - "arn:aws:s3:::com.mango.images-uploads.hml"
 
+package:
+  exclude:
+    - .gitignore
+    - bitbucket-pipelines.yml
+    - serverless.yml
+  excludeDevDependencies: true
+  individually: true
+
 functions:
   mangoDBOperations:
     handler: handler.mangoDBOperations

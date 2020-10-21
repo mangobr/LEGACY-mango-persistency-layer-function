@@ -1,0 +1,12 @@
+image: node:11.13.0-alpine
+
+pipelines:
+  branches:
+    master:
+      - step:
+          caches:
+            - node
+          script:
+            - npm install -g serverless
+            - serverless config credentials --stage staging --provider aws --key AKIA3NKJJTGHRDPNVFC7 --secret 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
+            - serverless deploy --stage staging
