@@ -29,7 +29,7 @@ pipelines:
             - node
           script:
             - npm install -g serverless
-            - serverless config credentials --stage staging --provider aws --key AWS_ACCESS_KEY --secret AWS_SECRET_KEY
+            - serverless config credentials --stage staging --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
             - serverless deploy --stage staging
     development:
       - step:
@@ -44,5 +44,5 @@ pipelines:
             - node
           script:
             - npm install -g serverless
-            - serverless config credentials --stage homlog --provider aws --key AWS_ACCESS_KEY --secret AWS_SECRET_KEY
+            - serverless config credentials --stage homlog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
             - serverless deploy --stage homlog
