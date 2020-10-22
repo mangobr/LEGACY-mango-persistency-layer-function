@@ -1,12 +1,58 @@
 image: node:11.13.0-alpine
 
 pipelines:
+  custom: # Pipelines that are triggered manually
+    deployment-to-prod:
+      - step:
+          name: Build to prod
+          caches:
+            - node
+          script:
+            - echo "Build to prod"
+      - step:
+          name: Test to prod
+          caches:
+            - node
+          script:
+            - echo "test to prod"
+      - step:
+          name: Deploy to prod
+          caches:
+            - node
+          script:
+            - echo "Deploy to prod"
   branches:
     feature/FA-157-criar-o-serveless-yaml:
       - step:
+          name: Build to staging
           caches:
             - node
           script:
             - npm install -g serverless
-            - serverless config credentials --stage staging --provider aws --key AKIA3NKJJTGHRDPNVFC7 --secret 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
+      - step:
+          name: Deploy to staging
+          caches:
+            - node
+          script:
+            - serverless config credentials --stage staging --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
             - serverless deploy --stage staging
+    development:
+      - step:
+          name: Build to homlog
+          caches:
+            - node
+          script:
+            - npm install -g serverless
+      - step:
+          name: Test to homlog
+          caches:
+            - node
+          script:
+            - echo "Realizar testes aqui"
+      - step:
+          name: Deploy to homlog
+          caches:
+            - node
+          script:
+            - serverless config credentials --stage homlog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - serverless deploy --stage homlog
