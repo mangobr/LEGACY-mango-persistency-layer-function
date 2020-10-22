@@ -22,15 +22,6 @@ pipelines:
           script:
             - echo "Deploy to prod"
   branches:
-    feature/FA-157-criar-o-serveless-yaml:
-      - step:
-          name: Deploy to staging
-          caches:
-            - node
-          script:
-            - npm install -g serverless
-            - serverless config credentials --stage staging --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
-            - serverless deploy --stage staging
     development:
       - step:
           name: Test to homlog
