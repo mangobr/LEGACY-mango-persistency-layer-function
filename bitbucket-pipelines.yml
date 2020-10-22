@@ -24,25 +24,14 @@ pipelines:
   branches:
     feature/FA-157-criar-o-serveless-yaml:
       - step:
-          name: Build to staging
-          caches:
-            - node
-          script:
-            - npm install -g serverless
-      - step:
           name: Deploy to staging
           caches:
             - node
           script:
-            - serverless config credentials --stage staging --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - npm install -g serverless
+            - serverless config credentials --stage staging --provider aws --key AWS_ACCESS_KEY --secret AWS_SECRET_KEY
             - serverless deploy --stage staging
     development:
-      - step:
-          name: Build to homlog
-          caches:
-            - node
-          script:
-            - npm install -g serverless
       - step:
           name: Test to homlog
           caches:
@@ -54,5 +43,6 @@ pipelines:
           caches:
             - node
           script:
-            - serverless config credentials --stage homlog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - npm install -g serverless
+            - serverless config credentials --stage homlog --provider aws --key AWS_ACCESS_KEY --secret AWS_SECRET_KEY
             - serverless deploy --stage homlog
