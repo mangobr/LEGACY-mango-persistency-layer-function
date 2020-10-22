@@ -6,7 +6,7 @@ const ScannedFoods = require('./database/models/scannedFoodsSchema')
 MangooDBConnect();
 
 
-  const hello = async event => {
+  const mangoDBOperations = async event => {
     let assignedFoods = []
     const objectKeys = event.requestPayload.Records[0].s3.object.key
     const clientId = objectKeys.split("/")[1]
@@ -42,4 +42,4 @@ MangooDBConnect();
     }
 
   };
-  module.exports = hello
+  module.exports = mangoDBOperations

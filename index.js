@@ -1,7 +1,7 @@
 const responseRekoPayload = require('./mock.json')
-const hello = require('./handler');
+const mangoDBOperations = require('./handler');
 
-hello(responseRekoPayload)
+mangoDBOperations(responseRekoPayload)
 
 
 
