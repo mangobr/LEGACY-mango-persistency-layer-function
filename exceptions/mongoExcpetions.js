@@ -24,7 +24,7 @@ class mongoInsertTransactionException extends Error {
     }
 }
 
-export {
+module.exports = {
     mongoFindTransactionException,
     mongoInsertTransactionException
 }
