@@ -19,6 +19,7 @@ package:
     - .gitignore
     - bitbucket-pipelines.yml
     - serverless.yml
+    - /tests
   excludeDevDependencies: true
   individually: true
 
