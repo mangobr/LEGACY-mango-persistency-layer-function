@@ -1,50 +1,75 @@
+const R = require("ramda");
 const MangooDBConnect = require("./database/mangoodbConnect");
-const TACO = require("./database/models/tacoSchema");
-const ScannedFoods = require("./database/models/scannedFoodsSchema");
-const create = require("./factory/foodAggregateRecognitionFactory");
+const createConsolidatedScan = require("./factory/foodAggregateRecognitionFactory");
+const {
+  incomingS3EventNotFound,
+  rekoNotFoundExcpetion,
+} = require("./exceptions/payloadExceptions");
+const { findTacoFoodDescriptionByName, insertValidatedFoodAssignment } = require("./mongoTransactions");
+const createPreassigneModel = require("./factory/modelPreassignFactory");
+const { verifyGeneralFoodMismatch } = require("./operations");
 
 MangooDBConnect();
 
 const mangoDBOperations = async (event) => {
   let assignedFoods = [];
   try {
-    const objectKeys = event.requestPayload.Records[0].s3.object.key;
-    const clientId = objectKeys.split("/")[1];
-    const labelList = event.responsePayload.Labels;
+    const s3EventObject = R.pathOr(
+      null,
+      ["requestPayload", "Records", [0], "s3"],
+      event
+    );
+    if (!s3EventObject)
+      throw new incomingS3EventNotFound(
+        `Evento de upload não contém informações do S3 no eventId: ${event.requestContext.requestId}`
+      );
+
+    const objectKeys = R.path(["object", "key"], s3EventObject);
+    const bucketName = R.path(["bucket", "name"], s3EventObject);
+    const userId = R.split("/", objectKeys)[1];
+    const photo = R.split("/", objectKeys)[2];
+
+    const labelList = R.pathOr(null, ["responsePayload", "Labels"], event);
+    if (!labelList)
+      throw new rekoNotFoundExcpetion(
+        `Não foi possível identificar os objetos do eventId: ${event.requestContext.requestId}`
+      );
+
     await Promise.all(
       labelList.map(async (label) => {
+        //TODO: Remove unrelated labels (Fork, Cutlery, Dish)
         const labeledFood = label.Name;
-        const tacoResponse = await TACO.find({
-          description: { $regex: labeledFood },
-        });
+        const tacoResponse = await findTacoFoodDescriptionByName(labeledFood);
         if (tacoResponse.length > 0) {
-          const assignmentModel = {
-            label: labeledFood,
-            nutritionalFacts: [],
-          };
-          tacoResponse.map((foodCandidate, index) => {
-            const verify = foodCandidate.description.split(",")[0];
-            if (labeledFood == verify) {
-              assignmentModel.nutritionalFacts.push(tacoResponse[index]);
+          const preAssignmentModel = createPreassigneModel(labeledFood);
+
+          tacoResponse.map((foodCandidate) => {
+            const verifiedFoodLabel = verifyGeneralFoodMismatch(
+              labeledFood,
+              foodCandidate
+            );
+            if(verifiedFoodLabel){
+                preAssignmentModel.nutritionalFacts.push(foodCandidate);
             }
           });
-          assignedFoods.push(assignmentModel);
+            assignedFoods.push(preAssignmentModel);
         }
       })
     );
 
-    const consolidatedResponse = create(
-      clientId,
+    const consolidatedResponse = createConsolidatedScan(
+      userId,
       assignedFoods,
-      event.timestamp
+      event.timestamp,
+      `https://${bucketName}.s3.amazonaws.com/uploads/${userId}/${photo}`
     );
-    // console.log(
-    //   consolidatedResponse.consolidatedScannedFood[0].nutritionalFacts
-    // );
-    // await ScannedFoods.insertMany(consolidatedResponse);
-    // console.log("Consolidated Response - Ok!");
+    console.log(
+      consolidatedResponse
+    );
+    await insertValidatedFoodAssignment(consolidatedResponse)
+    
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 module.exports = mangoDBOperations;
