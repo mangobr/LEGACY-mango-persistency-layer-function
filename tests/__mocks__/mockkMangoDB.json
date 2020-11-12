@@ -1,0 +1,112 @@
+{
+    "__v": 0,
+    "_id": "5f899240fb559b6f9047c52b",
+    "id": 96,
+    "description": "Eggplant, raw",
+    "re": {
+        "qty": "24",
+        "unit": "mcg"
+    },
+    "rae": {
+        "qty": "12",
+        "unit": "mcg"
+    },
+    "vitaminC": {
+        "qty": "3.01",
+        "unit": "mg"
+    },
+    "baseQty": "100",
+    "baseUnit": "g",
+    "categoryId": 2,
+    "attributes": {
+        "humidity": {
+            "qty": "93.8033333333333",
+            "unit": "percents"
+        },
+        "protein": {
+            "qty": "1.22101449275362",
+            "unit": "g"
+        },
+        "lipid": {
+            "qty": "0.1",
+            "unit": "g"
+        },
+        "cholesterol": {
+            "qty": "NA",
+            "unit": "mg"
+        },
+        "carbohydrate": {
+            "qty": "4.42898550724637",
+            "unit": "g"
+        },
+        "fiber": {
+            "qty": "2.87333333333333",
+            "unit": "g"
+        },
+        "ashes": {
+            "qty": "0.446666666666667",
+            "unit": "g"
+        },
+        "calcium": {
+            "qty": "9.22",
+            "unit": "mg"
+        },
+        "magnesium": {
+            "qty": "12.9133333333333",
+            "unit": "mg"
+        },
+        "phosphorus": {
+            "qty": "20.4633333333333",
+            "unit": "mg"
+        },
+        "iron": {
+            "qty": "0.246666666666667",
+            "unit": "mg"
+        },
+        "sodium": {
+            "qty": "Tr",
+            "unit": "mg"
+        },
+        "potassium": {
+            "qty": "204.546666666667",
+            "unit": "mg"
+        },
+        "copper": {
+            "qty": "0.063333333333333",
+            "unit": "mg"
+        },
+        "zinc": {
+            "qty": "0.12",
+            "unit": "mg"
+        },
+        "retinol": {
+            "qty": "NA",
+            "unit": "mcg"
+        },
+        "thiamine": {
+            "qty": "0.043333333333333",
+            "unit": "mg"
+        },
+        "riboflavin": {
+            "qty": "0.046666666666667",
+            "unit": "mg"
+        },
+        "pyridoxine": {
+            "qty": "Tr",
+            "unit": "mg"
+        },
+        "niacin": {
+            "qty": "Tr",
+            "unit": "mg"
+        },
+        "energy": {
+            "kcal": "19.6277536231884",
+            "kj": "82.1225211594202"
+        },
+        "manganese": {
+            "qty": "0.1",
+            "unit": "mg"
+        }
+    },
+    "searchDescription": "Berinjela, crua"
+}

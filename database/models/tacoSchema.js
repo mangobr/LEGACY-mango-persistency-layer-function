@@ -2,8 +2,17 @@ const mongoose = require('mongoose')
 
 const TacoSchema = new mongoose.Schema(
     {
-        _id: Number,
+        _id: String,
+        id: Number,
         description: String,
+        re: {
+            qty: String,
+            unit: String
+        },
+        rae: {
+            qty: String,
+            unit: String
+        },
         vitaminC: {
             qty: String,
             unit: String
