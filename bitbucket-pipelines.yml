@@ -21,19 +21,21 @@ pipelines:
             - node
           script:
             - echo "Deploy to prod"
-  # branches:
-  #   development:
-  #     - step:
-  #         name: Test to homlog
-  #         caches:
-  #           - node
-  #         script:
-  #           - echo "Realizar testes aqui"
-  #     - step:
-  #         name: Deploy to homlog
-  #         caches:
-  #           - node
-  #         script:
-  #           - npm install -g serverless
-  #           - serverless config credentials --stage homlog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
-  #           - serverless deploy --stage homlog
+  branches:
+    development:
+      - step:
+          image: node:12-alpine
+          name: Staging Environment Tests
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test:watch
+      - step:
+          name: Deploy to homlog
+          caches:
+            - node
+          script:
+            - npm install -g serverless
+            - serverless config credentials --stage homlog --provider aws --key ${AWS_ACCESS_KEY} --secret ${AWS_SECRET_KEY}
+            - serverless deploy --stage homlog
