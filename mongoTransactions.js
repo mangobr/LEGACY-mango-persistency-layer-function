@@ -10,7 +10,7 @@ const findTacoFoodDescriptionByName = async (labeledFood) => {
     const tacoLabel = await TACO.find({
       description: { $regex: labeledFood },
     });
-    return tacoLabel;
+    return JSON.parse(JSON.stringify(tacoLabel));
   } catch (error) {
     console.error("Erro ao encontrar a descrição do alimento: ", error);
     throw mongoFindTransactionException(

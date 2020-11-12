@@ -21,10 +21,10 @@ mongoose.connect(mangoDBConnectionString)
     })
 
     test('should return a list of foods which has been filtered by a regex', async () => {
-        const tacoCollection = new TACO(exportedTacoCollection)
+        const tacoCollection = new TACO(exportedTacoCollection[0])
         await tacoCollection.save()
         const eggResultsFilteredByName = await findTacoFoodDescriptionByName("Egg")
-        expect(JSON.parse(JSON.stringify(eggResultsFilteredByName))).toEqual([exportedTacoCollection])
+        expect(eggResultsFilteredByName).toEqual(exportedTacoCollection)
     })
     
     
