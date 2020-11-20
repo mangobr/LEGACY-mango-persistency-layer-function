@@ -4,6 +4,7 @@ const {
   mongoFindTransactionException,
   mongoInsertTransactionException,
 } = require("./exceptions/mongoExcpetions");
+const { missingPaylodException } = require("./exceptions/payloadExceptions");
 
 const findTacoFoodDescriptionByName = async (labeledFood) => {
   try {
@@ -21,7 +22,13 @@ const findTacoFoodDescriptionByName = async (labeledFood) => {
 
 const insertValidatedFoodAssignment = async (consolidatedResponse) => {
   try {
-    await ScannedFoods.insertMany(consolidatedResponse);
+    if (consolidatedResponse) {
+      await ScannedFoods.insertMany(consolidatedResponse);
+      return "Scan consolidado populado no MangoDB";
+    } else
+      throw new missingPaylodException(
+        "Objeto de consolidação não deve ser nulo/undefined"
+      );
   } catch (error) {
     console.error("Erro na inserção do labeling consolidado no Mongo: ", error);
     throw mongoInsertTransactionException(

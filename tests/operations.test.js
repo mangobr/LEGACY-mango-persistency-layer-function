@@ -4,7 +4,7 @@ const {
   returnsFoodLabel,
   returnsFoodCandidateOnMatch,
   returnsFoodCandidateOnMismatch,
-} = require("./__mocks__/mockkOperations.js");
+} = require("./__mocks__/mockks");
 
 describe(`should test operations and tranformations prior database transactions`, () => {
   it(`should validate two equal foods on match`, () => {
