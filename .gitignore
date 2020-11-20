@@ -8,3 +8,6 @@ jspm_packages
 # Local Env Variables
 .env
 .yarn-lock
+
+#Tests 
+coverage
