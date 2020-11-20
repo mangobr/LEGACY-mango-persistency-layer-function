@@ -1,5 +1,4 @@
-
-class incomingS3EventNotFound extends Error {
+class IncomingS3EventNotFound extends Error {
     constructor(message) {
         super(message)
 
@@ -12,8 +11,20 @@ class incomingS3EventNotFound extends Error {
     }
 }
 
+class RekoNotFoundExcpetion extends Error {
+    constructor(message) {
+        super(message)
 
-class rekoNotFoundExcpetion extends Error {
+        // Saving class name in the property of our custom error as a shortcut.
+        this.name = this.constructor.name
+
+        // Capturing stack trace, excluding constructor call from it.
+        Error.captureStackTrace(this, this.constructor)
+        this.status = 400
+    }
+}
+
+class MissingPaylodException extends Error {
     constructor(message) {
         super(message)
 
@@ -27,6 +38,7 @@ class rekoNotFoundExcpetion extends Error {
 }
 
 module.exports = {
-    incomingS3EventNotFound,
-    rekoNotFoundExcpetion
+    IncomingS3EventNotFound,
+    RekoNotFoundExcpetion,
+    MissingPaylodException
 }

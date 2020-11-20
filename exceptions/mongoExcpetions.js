@@ -1,4 +1,4 @@
-class mongoFindTransactionException extends Error {
+class MongoFindTransactionException extends Error {
     constructor(message) {
         super(message)
 
@@ -11,7 +11,7 @@ class mongoFindTransactionException extends Error {
     }
 }
 
-class mongoInsertTransactionException extends Error {
+class MongoInsertTransactionException extends Error {
     constructor(message) {
         super(message)
 
@@ -25,6 +25,6 @@ class mongoInsertTransactionException extends Error {
 }
 
 module.exports = {
-    mongoFindTransactionException,
-    mongoInsertTransactionException
+    MongoFindTransactionException,
+    MongoInsertTransactionException
 }

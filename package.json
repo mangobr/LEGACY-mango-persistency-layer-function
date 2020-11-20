@@ -14,7 +14,7 @@
   "scripts": {
     "start": "node handler.js",
     "dev": "nodemon index.js",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll --coverage"
   },
   "devDependencies": {
     "jest": "^26.6.0",

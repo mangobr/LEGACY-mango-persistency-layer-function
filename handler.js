@@ -2,8 +2,8 @@ const R = require("ramda");
 const MangooDBConnect = require("./database/mangoodbConnect");
 const createConsolidatedScan = require("./factory/foodAggregateRecognitionFactory");
 const {
-  incomingS3EventNotFound,
-  rekoNotFoundExcpetion,
+  IncomingS3EventNotFound,
+  RekoNotFoundExcpetion,
 } = require("./exceptions/payloadExceptions");
 const { findTacoFoodDescriptionByName, insertValidatedFoodAssignment } = require("./mongoTransactions");
 const createPreassigneModel = require("./factory/modelPreassignFactory");
@@ -20,7 +20,7 @@ const mangoDBOperations = async (event) => {
       event
     );
     if (!s3EventObject)
-      throw new incomingS3EventNotFound(
+      throw new IncomingS3EventNotFound(
         `Evento de upload não contém informações do S3 no eventId: ${event.requestContext.requestId}`
       );
 
@@ -31,7 +31,7 @@ const mangoDBOperations = async (event) => {
 
     const labelList = R.pathOr(null, ["responsePayload", "Labels"], event);
     if (!labelList)
-      throw new rekoNotFoundExcpetion(
+      throw new RekoNotFoundExcpetion(
         `Não foi possível identificar os objetos do eventId: ${event.requestContext.requestId}`
       );
 
