@@ -23,7 +23,7 @@ pipelines:
             - node
           script:
             - npm install
-            - npm run test:watch
+            - npm run test
           services:
             - mongo
       - step:
