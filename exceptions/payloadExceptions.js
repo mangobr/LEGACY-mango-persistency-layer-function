@@ -1,4 +1,4 @@
-class incomingS3EventNotFound extends Error {
+class IncomingS3EventNotFound extends Error {
     constructor(message) {
         super(message)
 
@@ -11,7 +11,7 @@ class incomingS3EventNotFound extends Error {
     }
 }
 
-class rekoNotFoundExcpetion extends Error {
+class RekoNotFoundExcpetion extends Error {
     constructor(message) {
         super(message)
 
@@ -24,7 +24,7 @@ class rekoNotFoundExcpetion extends Error {
     }
 }
 
-class missingPaylodException extends Error {
+class MissingPaylodException extends Error {
     constructor(message) {
         super(message)
 
@@ -38,7 +38,7 @@ class missingPaylodException extends Error {
 }
 
 module.exports = {
-    incomingS3EventNotFound,
-    rekoNotFoundExcpetion,
-    missingPaylodException
+    IncomingS3EventNotFound,
+    RekoNotFoundExcpetion,
+    MissingPaylodException
 }

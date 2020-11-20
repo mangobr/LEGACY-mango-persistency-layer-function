@@ -1,8 +1,8 @@
 const TACO = require("./database/models/tacoSchema");
 const ScannedFoods = require("./database/models/scannedFoodsSchema");
 const {
-  mongoFindTransactionException,
-  mongoInsertTransactionException,
+  MongoFindTransactionException,
+  MongoInsertTransactionException,
 } = require("./exceptions/mongoExcpetions");
 const { missingPaylodException } = require("./exceptions/payloadExceptions");
 
@@ -14,7 +14,7 @@ const findTacoFoodDescriptionByName = async (labeledFood) => {
     return JSON.parse(JSON.stringify(tacoLabel));
   } catch (error) {
     console.error("Erro ao encontrar a descrição do alimento: ", error);
-    throw mongoFindTransactionException(
+    throw MongoFindTransactionException(
       `Erro ao buscar pelo alimento na TACO com a label: ${labeledFood}`
     );
   }
@@ -31,7 +31,7 @@ const insertValidatedFoodAssignment = async (consolidatedResponse) => {
       );
   } catch (error) {
     console.error("Erro na inserção do labeling consolidado no Mongo: ", error);
-    throw mongoInsertTransactionException(
+    throw MongoInsertTransactionException(
       `Erro ao salvar ${consolidatedResponse} no Banco`
     );
   }
