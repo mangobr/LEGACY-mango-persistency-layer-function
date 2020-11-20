@@ -20,6 +20,8 @@ package:
     - bitbucket-pipelines.yml
     - serverless.yml
     - /tests
+    - /coverage
+    - .env
   excludeDevDependencies: true
   individually: true
 
