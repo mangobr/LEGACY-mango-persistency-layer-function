@@ -11,7 +11,7 @@ const { verifyGeneralFoodMismatch } = require("./operations");
 
 MangooDBConnect();
 
-const mangoDBOperations = async (event) => {
+module.exports.mangoDBOperations = async (event) => {
   let assignedFoods = [];
   try {
     const s3EventObject = R.pathOr(
@@ -72,4 +72,3 @@ const mangoDBOperations = async (event) => {
     console.error(error);
   }
 };
-module.exports = mangoDBOperations;
