@@ -9,7 +9,6 @@ provider:
   memorySize: 128
 
 package:
-  individually: true
   exclude:
     - .gitignore
     - bitbucket-pipelines.yml
@@ -18,6 +17,7 @@ package:
     - coverage/**
     - .env
   excludeDevDependencies: true
+  individually: true
 
 functions:
   mangoDBOperations:
