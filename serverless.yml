@@ -23,4 +23,4 @@ functions:
   mangoDBOperations:
     handler: handler.mangoDBOperations
     environment:
-      MANGODB_CONNECT: mongodb+srv://mangooAI:2EmsljTfzHUpDS7h@mangodb.5aesw.mongodb.net/mangoDB
+      MANGODB_CONNECT: ${env:MANGODB_CONNECT}
