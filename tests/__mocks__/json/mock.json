@@ -1,0 +1,214 @@
+{
+    "version": "1.0",
+    "timestamp": "2020-09-17T22:35:47.236Z",
+    "requestContext": {
+        "requestId": "c395ca04-ab96-4618-9f43-f1f1fc28359e",
+        "functionArn": "arn:aws:lambda:us-east-1:018413147376:function:s3-Reko:$LATEST",
+        "condition": "Success",
+        "approximateInvokeCount": 1
+    },
+    "requestPayload": {
+        "Records": [
+            {
+                "eventVersion": "2.1",
+                "eventSource": "aws:s3",
+                "awsRegion": "us-east-1",
+                "eventTime": "2020-09-17T22:35:35.544Z",
+                "eventName": "ObjectCreated:Put",
+                "userIdentity": {
+                    "principalId": "AZVO6PZ9OFROG"
+                },
+                "requestParameters": {
+                    "sourceIPAddress": "177.131.164.75"
+                },
+                "responseElements": {
+                    "x-amz-request-id": "674950EEBDA1A995",
+                    "x-amz-id-2": "guWG2runy9edJySRbg4LrthFZdbBrBfxv4DbXkTWYB08x4LSINLaFWT8hsS07ehJYvqvnXlFYOUx27raPmHvSvYmxYtNkB3U"
+                },
+                "s3": {
+                    "s3SchemaVersion": "1.0",
+                    "configurationId": "acb509ee-f8ca-4ca8-b751-3e7a6da4f13b",
+                    "bucket": {
+                        "name": "s3flutteruploadtest",
+                        "ownerIdentity": {
+                            "principalId": "AZVO6PZ9OFROG"
+                        },
+                        "arn": "arn:aws:s3:::s3flutteruploadtest"
+                    },
+                    "object": {
+                        "key": "uploads/test/pf_matheusinho.jpg",
+                        "size": 117260,
+                        "eTag": "cf54688df87fca5046fe8603dd5a4b41",
+                        "sequencer": "005F63E4C0BC2C40F8"
+                    }
+                }
+            }
+        ]
+    },
+    "responseContext": {
+        "statusCode": 200,
+        "executedVersion": "$LATEST"
+    },
+    "responsePayload": {
+        "Labels": [
+            {
+                "Instances": [],
+                "Confidence": 92.69294738769531,
+                "Parents": [],
+                "Name": "Food"
+            },
+            {
+                "Instances": [],
+                "Confidence": 92.69294738769531,
+                "Parents": [
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Meal"
+            },
+            {
+                "Instances": [],
+                "Confidence": 92.25479125976562,
+                "Parents": [
+                    {
+                        "Name": "Meal"
+                    },
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Dish"
+            },
+            {
+                "Instances": [
+                    {
+                        "BoundingBox": {
+                            "Width": 0.14820624887943268,
+                            "Top": 0.7258467078208923,
+                            "Left": 0.3010556995868683,
+                            "Height": 0.1460600644350052
+                        },
+                        "Confidence": 89.69827270507812
+                    },
+                    {
+                        "BoundingBox": {
+                            "Width": 0.14106445014476776,
+                            "Top": 0.5606531500816345,
+                            "Left": 0.14197398722171783,
+                            "Height": 0.12595824897289276
+                        },
+                        "Confidence": 87.8756332397461
+                    },
+                    {
+                        "BoundingBox": {
+                            "Width": 0.3019815981388092,
+                            "Top": 0.40314313769340515,
+                            "Left": 0.6273838877677917,
+                            "Height": 0.32657358050346375
+                        },
+                        "Confidence": 70.69322967529297
+                    }
+                ],
+                "Confidence": 89.69827270507812,
+                "Parents": [
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Egg"
+            },
+            {
+                "Instances": [],
+                "Confidence": 73.92725372314453,
+                "Parents": [
+                    {
+                        "Name": "Cutlery"
+                    }
+                ],
+                "Name": "Fork"
+            },
+            {
+                "Instances": [],
+                "Confidence": 73.92725372314453,
+                "Parents": [],
+                "Name": "Cutlery"
+            },
+            {
+                "Instances": [],
+                "Confidence": 67.74361419677734,
+                "Parents": [
+                    {
+                        "Name": "Dessert"
+                    },
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Cream"
+            },
+            {
+                "Instances": [],
+                "Confidence": 67.74361419677734,
+                "Parents": [
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Dessert"
+            },
+            {
+                "Instances": [],
+                "Confidence": 67.74361419677734,
+                "Parents": [
+                    {
+                        "Name": "Dessert"
+                    },
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Creme"
+            },
+            {
+                "Instances": [
+                    {
+                        "BoundingBox": {
+                            "Width": 0.770621657371521,
+                            "Top": 0.051503755152225494,
+                            "Left": 0.13775323331356049,
+                            "Height": 0.7579666972160339
+                        },
+                        "Confidence": 67.74361419677734
+                    }
+                ],
+                "Confidence": 67.74361419677734,
+                "Parents": [
+                    {
+                        "Name": "Cream"
+                    },
+                    {
+                        "Name": "Dessert"
+                    },
+                    {
+                        "Name": "Food"
+                    }
+                ],
+                "Name": "Ice Cream"
+            }
+        ],
+        "ResponseMetadata": {
+            "RetryAttempts": 0,
+            "HTTPStatusCode": 200,
+            "RequestId": "3b21e185-319e-401f-b58f-3e5e3c9ceabb",
+            "HTTPHeaders": {
+                "date": "Thu, 17 Sep 2020 22:35:47 GMT",
+                "x-amzn-requestid": "3b21e185-319e-401f-b58f-3e5e3c9ceabb",
+                "content-length": "1638",
+                "content-type": "application/x-amz-json-1.1",
+                "connection": "keep-alive"
+            }
+        },
+        "LabelModelVersion": "2.0"
+    }
+}
